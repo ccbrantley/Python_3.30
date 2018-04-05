@@ -5,7 +5,7 @@
 import random
 def main():
 # Our variables to hold data for the user_choice, computer/players score and the amount of ties
-    user_choice = 0
+    user_choice = -1
     user_score = 0
     computer_score = 0
     game_ties = 0
@@ -15,9 +15,19 @@ def main():
 # Using if/elif statements we filter out our data and decide winner/loser
 # we end each round by displaying the user/computer score and the amount of ties
 # Anytime the user would like to exit the program they can enter 4 as their input
+# We use a try statement to make sure we handle any non-integer selections
+# We use an if statement to ensure range of numbers used is zero through four
     while (user_choice != 4):
+        user_choice = -1
         rand_choice = random.randint(1,3)
-        user_choice = int(input("Choose a selection from the menu.\n1.Rock\n2.Paper\n3.Scissors\n4.Exit\nChoice: "));
+        while (user_choice < 0 or user_choice > 4):
+            try:
+                user_choice = int(input("Choose a selection from the menu.\n1.Rock\n2.Paper\n3.Scissors\n4.Exit\nChoice: "))
+            except ValueError:
+                print("User choice must be an integer value.")
+            if (user_choice < 0 or user_choice > 4):
+                print("User choice must be between zero and four.")
+            
         print("\n----------------------")
         if (rand_choice == user_choice):
              print("There was a tie!")
