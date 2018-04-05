@@ -1,0 +1,48 @@
+#Christopher Brantley
+#Rock Paper Scissors
+#4/05/2018
+#Importing random library for random number generation
+import random
+def main():
+# Our variables to hold data for the user_choice, computer/players score and the amount of ties
+    user_choice = 0
+    user_score = 0
+    computer_score = 0
+    game_ties = 0
+#While loop to continue program until player is finished
+# We first create a random number between one and three with pre-assigned values of (1. Rock, 2. Paper, 3. Scissors)
+# We get our user input for their selection of either rock, paper, scissors
+# Using if/elif statements we filter out our data and decide winner/loser
+# we end each round by displaying the user/computer score and the amount of ties
+# Anytime the user would like to exit the program they can enter 4 as their input
+    while (user_choice != 4):
+        rand_choice = random.randint(1,3)
+        user_choice = int(input("Choose a selection from the menu.\n1.Rock\n2.Paper\n3.Scissors\n4.Exit\nChoice: "));
+        print("\n----------------------")
+        if (rand_choice == user_choice):
+             print("There was a tie!")
+             game_ties += 1
+        elif (rand_choice == 1 and user_choice == 2):
+             print("Paper beats rock.\nPlayer wins this round!")
+             user_score += 1
+        elif (rand_choice == 1 and user_choice == 3):
+             print("Rock beats scissors.\nComputer wins this round!")
+             computer_score += 1
+        elif (rand_choice == 2 and user_choice == 3):
+             print("Scissors beat paper.\nPlayer wins this round!")
+             user_score += 1
+        elif (rand_choice == 2 and user_choice == 1):
+             print("Paper beats rock.\nComputer wins this round!")
+             computer_score += 1
+        elif (rand_choice == 3 and user_choice == 1):
+             print("Rock beats scissors.\nPlayer wins this round!")
+             user_score += 1
+        elif (rand_choice == 3 and user_choice == 2):
+             print("Scissors beat paper.\nComputer wins this round!")
+             computer_score += 1
+        print("User Score: ", user_score)
+        print("Player Score: ", computer_score)
+        print("Ties: ", game_ties)
+        print("\n----------------------")
+# We call our main loop to begin our program
+main()
